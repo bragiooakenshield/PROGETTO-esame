@@ -5,30 +5,26 @@
 
 int main()
 { 
- BookList_t Library;
- int choice;
- instructions();
+ BookList_t Libreria;
+ int scelta;
+ comandi();
  printf("\nSelezionare una voce: "); 
- scanf("%d", &choice);
- while(choice!=7)
+ scanf("%d", &scelta);
+ while(scelta!=4)
   {
-  switch (choice) 
+  switch (scelta) 
      {
        case 1:
       printf("Cerca il libro dal suo id:\n");
-      Cell_t *tail = searchId(&Library);
-      if (tail != NULL)
+      Cell_t *Ptr = searchId(&Libreria);
+      if (Ptr != NULL)
         printf("VERO\n");
       else printf("FALSO\n");
       break;
       
       case 2:
-      /*printf("Controllo la lista\n");
-      Cell_t *ptr = Control(&Library);
-      if (ptr != NULL)
-      break;*/
       printf("Inserire l'id:\n");
-      Cell_t *p = searchId(&Library);
+      Cell_t *p = searchId(&Libreria);
       if (p != NULL)
       printElem(&p->book);
       else printf("Nessun libro con questo id è disponibile.\n");
@@ -36,12 +32,12 @@ int main()
  
      case 3: 
       printf("Inserire il Libro:\n");
-      insTail(&Library);
+      insTail(&Libreria);
       break;
 
       case 4:
       printf("Rimosso l'ultimo libro dalla lista.\n");
-      rmvTail(&Library);
+      rmvTail(&Libreria);
       break;
 
      /* case 5:
@@ -56,7 +52,7 @@ int main()
     }
   
   printf("\nSelezionare una voce: ");
-  scanf("%d", &choice);
+  scanf("%d", &scelta);
   } 
  return 0;
 }  
