@@ -66,25 +66,26 @@ while(1) 											//con while (1) entra in un loop infinito
 void printElem(Book_t *book)
 {
  if(book->genre==0)
- 	printf("IL genere è action");
+ 	printf("IL genere è Azione");
  else if(book->genre==1)
- 	printf("IL genere è adventure");
+ 	printf("IL genere è Avventura");
  else if(book->genre==2)
- 	printf("IL genere è novel");
+ 	printf("IL genere è Romanzo");
  else if(book->genre==3)
- 	printf("IL genere è fantasy");
+ 	printf("IL genere è Fantasy");
  else if(book->genre==4)
- 	printf("IL genere è noir");
+ 	printf("IL genere è Noir");
  else if(book->genre==5)
- 	printf("IL genere è thriller");
+ 	printf("IL genere è Thriller");
  else if (book->genre==6)
- 	printf("IL genere è horror");
+ 	printf("IL genere è Horror");
  else printf(". IL genere non è disponibile");  
   
    printf(" L'autore è: %s ",book->writer);
    printf("La data è:%hd/%hd/%hd.\n",book->published.day, book->published.month, book->published.year);
    printf("Sono presenti %hd libri in archivio\n", book->inLibrary);
-   printf("I libri fuori archivio sono %hd\n",book->outLibrary); printf("L'id del libro è %hd.\n", book->id);       
+   printf("I libri fuori archivio sono %hd\n",book->outLibrary);
+   printf("L'id del libro è %hd.\n", book->id);       
 } 
 
 
