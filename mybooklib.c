@@ -93,11 +93,11 @@ void printElem(Book_t *book)
 Cell_t* searchId(BookList_t* List)                    //Puntatore alla Cell del libro che cerco.
 {
  Cell_t* Temp = List->pFirst;
- short id;
- scanf("%hd", &id);
+ short codice;
+ scanf("%hd", &codice);
  while(Temp)
    {
-   	 if(Temp->book.id == id)
+   	 if(Temp->book.id == codice)
    	 break;
  	Temp = Temp->pNext;
 	} 
@@ -106,12 +106,12 @@ Cell_t* searchId(BookList_t* List)                    //Puntatore alla Cell del 
 
 void insTail(BookList_t* List)
 {  
- Cell_t *Gandalf= allocBook();
- if(List->pLast==NULL)                          	 // Gandalf è il nome generico della funzione.
-   List->pLast=List->pFirst = Gandalf;				
+ Cell_t *Ptr= allocBook();
+ if(List->pLast==NULL)                          	
+   List->pLast=List->pFirst = Ptr;				
  else 
-     List->pLast->pNext = Gandalf;
-     List->pLast = Gandalf ;
+     List->pLast->pNext = Ptr;
+     List->pLast = Ptr ;
 } 
 
 void rmvTail(BookList_t* List) 
