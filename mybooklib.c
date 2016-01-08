@@ -27,7 +27,7 @@ Cell_t *allocBook()
  printf("Scrittore:");
  scanf("%s", p->writer);
  printf(" Genere:\n" 
- 		"0.Azione;\n"
+ 	"0.Azione;\n"
         "1.Avventura;\n" 
         "2.Romanzo;\n"
         "3.Fantasy;\n" 
