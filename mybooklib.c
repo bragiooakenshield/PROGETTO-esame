@@ -4,7 +4,7 @@
 #include "mybooklib.h"
 
 
-void instructions()
+void comandi()
         {
          printf("Selezionare una voce:\n"
                 "1 Per vedere se un libro è presente nella lista attraverso il suo id.\n"
