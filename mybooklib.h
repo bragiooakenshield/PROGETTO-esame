@@ -1,4 +1,4 @@
-enum book { Azione=0, Avventura, Romanzo, Fantasy, Noir, Thriller, Horror};
+enum book { Azione=0, Avventura, Romanzo, Fantasy, Thriller, Horror};
 struct Date { short day;
               short month;
               short year; 
@@ -9,22 +9,23 @@ typedef struct Book { char title [64];
                       struct Date published;
                       short inLibrary;
                       short outLibrary;
-                      short id;                 //L'id è il codice univoco di riconoscimento.
-                      } Book_t;                 //Book_t rappresenta tutta la "struct Book"
+                      short id;               
+                      } StructBook;                 //Book_t rappresenta tutta la "struct Book"
 
-typedef struct Cell { Book_t book;                     
+typedef struct Cell { StructBook book;                     
                       struct Cell* pNext; 
-                    } Cell_t;                   //Ogni elemento della BookList.Sinonimo distruct Cell.
+                    } StructCell;                   //Ogni elemento della BookList.Sinonimo distruct Cell.
  
-typedef struct BookList { Cell_t* pFirst; Cell_t *pLast; } BookList_t; 
+typedef struct BookList { StructCell* pFirst; StructCell *pLast; } BookList; 
 
                      
-Cell_t* allocBook();                            //Alloca memoria.
-void insHead();                                 //Inserisce all'inizio della lista.
-void rmvHead(BookList_t*);                          //Elimina libro all'inizio della lista.
-void insTail();                                 //Inserisce un  libro alla fine della lista.
-void rmvTail(BookList_t*);                          //Elimina l'ultimo libro della lista.
-void printElem(Book_t*);                        //Stampa le caratteristiche di un libro dato il suo codice.
-void printList(BookList_t*);                   //Stampa tutta la lista. 
-void comandi();                                //Sceglie la funzione da svolgere.
-Cell_t* searchId(BookList_t*);                             //Ricerca un elemento attraverso il suo codice.
+StructCell* allocBook();								//Alloca la memoria.
+void insHead();											//Inserisce il libro all'inizio dell'elenco.
+void rmvHead(BookList*);								//Elimina il libro all'inizio dell'elenco.
+void insTail();											//Inserisce il libro alla fine dell'elenco.
+void rmvTail(BookList*);								//Elimina l'ultimo libro dell'elenco.
+void printElem(StructBook*);                    		//Stampa le informazioni di un libro dato il suo codice.
+void printList(BookList*);  			                //Stampa tutto l'elenco. 
+void comandi();                              			//Sceglie la funzione da svolgere.
+StructCell* searchId(BookList*);						//Ricerca un libro attraverso il suo codice(id).
+StructCell* rmvId(BookList*);							//Rimuove un libro dato il suo id
