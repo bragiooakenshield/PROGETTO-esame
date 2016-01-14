@@ -22,19 +22,19 @@ void comandi()
                 "  11 			--/ESCI\\--\n");
         }       
 
-StructCell *allocBook()
+StructCell *allocaLibro()
 {
- StructCell *Ptr = malloc(sizeof(StructCell));
- StructBook *p = &Ptr->book;
- if(p==NULL)
+ StructCell *Puntatore = malloc(sizeof(StructCell));
+ StructBook *Ptr = &Puntatore->book;
+ if(Ptr==NULL)
  {
   printf("			--/ALLOCAZIONE MEMORIA FALLITA\\--\n");
  } 
  printf("\n			--INSERIRE I PARAMETRI RICHIESTI--\n\n");  
  printf("			TITOLO:\n");
- scanf(" %[^\n]", p->title);
+ scanf(" %[^\n]", Ptr->title);
  printf("			SCRITTORE:\n");
- scanf(" %[^\n]", p->writer);
+ scanf(" %[^\n]", Ptr->writer);
  while(1)
  {
  printf(" 			GENERE:\n" 
@@ -47,7 +47,7 @@ StructCell *allocBook()
 
 		printf("\n		--INSERIRE IL N° DEL GENERE--\n");
  		scanf("%u", &p->genre);
-	  	if (p->genre<6) 
+	  	if (Ptr->genre<6) 
 		break;
 		printf("			--/GENERE NON DISPONIBILE\\--\n"
 				"		--PERFAVORE REINSERIRE IL N° DEL GENERE--\n\n");
@@ -59,30 +59,30 @@ while(1)
  {
   printf("		DATA DI PUBBLICAZIONE:\n");
   scanf("%hd%hd%hd", 
-  &p->published.day,
-  &p->published.month,
-  &p->published.year);
+  &Ptr->published.day,
+  &Ptr->published.month,
+  &Ptr->published.year);
 
- if (p->published.day<32) 
- 	if (p->published.month<13)
- 		if (p->published.year<2016)
+ if (Ptr->published.day<32) 
+ 	if (Ptr->published.month<13)
+ 		if (Ptr->published.year<2016)
 	 break;				 							
  printf("		--/ATTENZIONE DATA NON VALIDA/--.\n\n"
  		"		PERFAVORE REINSERIRE LA DATA..\n");
  }
 
  printf("N°COPIE PRESENTI IN LIBRERIA :  ");
- scanf("%hd", &p->inLibrary);
+ scanf("%hd", &Ptr->inLibrary);
  printf("N°COPIE IN PRESTITO :  ");
- scanf("%hd", &p->outLibrary);
+ scanf("%hd", &Ptr->outLibrary);
  printf("ID:  ");
- scanf("%hd" , &p->id);
- if (Ptr!=NULL)
+ scanf("%hd" , &Ptr->id);
+ if (Puntatore!=NULL)
  {
  printf("\n--DATI SALVATI CORRETTAMENTE--\n\n");
  } 
  else printf("\n--/DATI NON SALVATI\\!!--\n");
- return Ptr;
+ return Puntatore;
  }
 
 
@@ -115,16 +115,16 @@ void printElem(StructBook *book)
 
 StructCell* searchId(BookList* elenco)                    
 {
- StructCell* Temp = elenco->pFirst;
+ StructCell* P = elenco->pFirst;
  	short codice;
  		scanf("%hd", &codice);
- while(Temp)
+ while(P)
    {
-   	if(Temp->book.id == codice)
+   	if(P->book.id == codice)
    		 break;
- 	Temp = Temp->pNext;
+ 	P = P->pNext;
 	} 
-	return Temp;
+	return P;
 }
 
 StructCell* rmvId(BookList* elenco)
@@ -145,7 +145,7 @@ StructCell* rmvId(BookList* elenco)
 
 void insTail(BookList* elenco)
 {  
- 	StructCell *Ptr= allocBook();
+ 	StructCell *Ptr= allocaLibro();
  		if
  		(elenco->pLast==NULL)                          	
   			elenco->pLast=elenco->pFirst = Ptr;				
@@ -156,63 +156,63 @@ void insTail(BookList* elenco)
  
 void insHead(BookList* elenco)                  
 	{  
- 	StructCell *Ptr = allocBook();                  
+ 	StructCell *Puntatore = allocaLibro();                  
  		if
  		 (elenco->pFirst == NULL)
- 			elenco->pFirst=elenco->pLast=Ptr;
+ 			elenco->pFirst=elenco->pLast=Puntatore;
  			
  			else
- 				elenco->pFirst->pNext=Ptr;
- 				elenco->pFirst=Ptr;
+ 				elenco->pFirst->pNext=Puntatore;
+ 				elenco->pFirst=Puntatore;
  					  
 	 }
 void rmvTail(BookList* elenco) 
 {
-	StructCell* tempPtr=elenco->pFirst;
-	if(tempPtr==elenco->pFirst) 
+	StructCell* temp=elenco->pFirst;
+	if(temp==elenco->pFirst) 
 	{
-		free(tempPtr);
+		free(temp);
 			elenco->pFirst=elenco->pLast=NULL;
 	}
 		else 
 		{
-			while(tempPtr->pNext != elenco->pLast)
-				tempPtr=tempPtr->pNext;
-					tempPtr->pNext=NULL;
+			while(temp->pNext != elenco->pLast)
+				temp=temp->pNext;
+					temp->pNext=NULL;
 						free(elenco->pLast);
-							elenco->pLast=tempPtr;
+							elenco->pLast=temp;
 		}
 }		
 
 void rmvHead(BookList* elenco)                                                                   
 {
-	StructCell* tempPtr= elenco->pFirst;                //NON VA BENE SCRITTO COSÌ, NON FUNZIONA:(              
-	if(tempPtr == elenco->pLast)
+	StructCell* temp= elenco->pFirst;                //NON VA BENE SCRITTO COSÌ, NON FUNZIONA:(              
+	if(temp == elenco->pLast)
    {
-    free(tempPtr);
+    free(temp);
     	elenco->pFirst = elenco->pLast = NULL;
    } 
     else
      {
-      while(tempPtr->pNext != elenco->pFirst)       
-      	tempPtr= tempPtr->pNext;
-       		tempPtr->pNext = NULL;
+      while(temp->pNext != elenco->pFirst)       
+      	temp= temp->pNext;
+       		temp->pNext = NULL;
       			free (elenco->pFirst);
-       				elenco->pFirst= tempPtr;
+       				elenco->pFirst= temp;
      }
 } 
 
 void printList(BookList* elenco)
 {
- StructCell* Temp = elenco->pFirst;
- if (Temp != NULL)
+ StructCell* Ptr = elenco->pFirst;
+ if (Ptr != NULL)
  {
    printf("\nELENCO COMPLETO DEI LIBRI:\n");
  	 printf("\n--|||--|||--|||--|||--|||--|||--\n\n");
-  	 while(Temp != NULL) 
+  	 while(Ptr != NULL) 
 	{
-  	 printf("%s\n", Temp->book.title);
-  	 Temp = Temp->pNext;
+  	 printf("%s\n", Ptr->book.title);
+  	 Ptr = Ptr->pNext;
    	 printf("\n");
    	}
   	
