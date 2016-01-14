@@ -133,7 +133,7 @@ StructCell* rmvId(BookList* elenco)
 	short codermv;
 	while(rmv)
 	{
-		if(rmv->book.id==codermv)
+		if(pNext->book.id==codermv)
 		free(rmv);
 		break;
 		rmv=rmv->pNext;
