@@ -19,7 +19,7 @@ typedef struct Cell { StructBook book;
 typedef struct BookList { StructCell* pFirst; StructCell *pLast; } BookList; 
 
                      
-StructCell* allocBook();								//Alloca la memoria.
+StructCell* allocaLibro();								//Alloca la memoria.
 void insHead();											//Inserisce il libro all'inizio dell'elenco.
 void rmvHead(BookList*);								//Elimina il libro all'inizio dell'elenco.
 void insTail();											//Inserisce il libro alla fine dell'elenco.
