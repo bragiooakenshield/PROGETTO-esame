@@ -69,7 +69,10 @@ int main()
 		 if(e[0]=='s'||!strcmp(e,"si"))
 			{ 
 				rmvHead(&Libreria);
-				printf("LIBRO RIMOSSO CORRETTAMENTE.\n");
+				if (rmvHead!=NULL)
+				{
+					printf("LIBRO RIMOSSO CORRETTAMENTE.\n");
+				}
 			}
 				else if(e[0]=='n'||!strcmp(e,"no"))
 				{
@@ -90,7 +93,10 @@ int main()
 			 if(d[0]=='s'||!strcmp(d,"si"))
 			{ 
 				 rmvTail(&Libreria);
-				 printf("LIBRO RIMOSSO CORRETTAMENTE.\n");
+				 if (rmvTail != NULL)
+				 {
+				 	printf("LIBRO RIMOSSO CORRETTAMENTE.\n");
+				 }
 			}
 			else if(d[0]=='n'||!strcmp(d,"no"))
 			{
