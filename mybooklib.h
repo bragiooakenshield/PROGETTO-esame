@@ -28,4 +28,4 @@ void printElem(StructBook*);                    		//Stampa le informazioni di un
 void printList(BookList*);  			                //Stampa tutto l'elenco. 
 void comandi();                              			//Sceglie la funzione da svolgere.
 StructCell* searchId(BookList*);						//Ricerca un libro attraverso il suo codice(id).
-StructCell* rmvId(BookList*);							//Rimuove un libro dato il suo id
+void rmvId(BookList*);							//Rimuove un libro dato il suo id
