@@ -131,6 +131,7 @@ int main()
 		scanf(" %s",c);
 		if(c[0]=='s'||!strcmp(c,"si"))
 			{ 
+
 				printf("\n\t\t\aARRIVEDERCI!..A PRESTO!!\n\n");
 				return 0;
 			}
