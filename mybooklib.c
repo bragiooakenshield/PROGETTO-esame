@@ -6,7 +6,7 @@
 
 void comandi()
         {
-         printf("\t\tSELEZIONA UNA VOCE PER CONTINUARE!!\n\n"
+         printf("\n\t\tSELEZIONA UNA VOCE PER CONTINUARE!!\n\n"
                 "1\tVERIFICA LA PRESENZA DEL LIBRO DAL SUO ID.\n"
                 "2\tCERCA UN LIBRO DAL SUO ID.\n"
                 "3\tRIMUOVI UN LIBRO DAL SUO ID.\n"
@@ -122,6 +122,7 @@ StructCell* searchId(BookList* elenco)
 
 void rmvId(BookList* elenco)
 {
+	{
 	StructCell* id=searchId(elenco);
 	StructCell* rmv=elenco->pFirst;
 	StructCell* ID;
@@ -135,10 +136,13 @@ void rmvId(BookList* elenco)
 			ID=id->pNext;
 			free(id);
 			rmv->pNext=ID;
-	}		
-	return comandi();
-}
 	
+	}
+	else printf("\a--/NESSUN LIBRO TROVATO\\--\n");		
+	
+} 
+return comandi();
+}	
 
 
 void insTail(BookList* elenco)
